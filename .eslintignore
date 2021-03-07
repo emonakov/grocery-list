@@ -3,3 +3,4 @@
 ./config/**/*
 ./scripts/**/*
 *.d.ts
+reportWebVitals.ts
