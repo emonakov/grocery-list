@@ -38,7 +38,10 @@ export const slice = createSlice({
     ) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
-    changeState: (state: GroceryState, action: PayloadAction<GroceryItem>) => {
+    changeGroceryItemState: (
+      state: GroceryState,
+      action: PayloadAction<GroceryItem>,
+    ) => {
       const item = state.items.find((item) => item.id === action.payload.id);
       if (item) {
         item.statusHistory.push({
@@ -51,9 +54,26 @@ export const slice = createSlice({
   },
 });
 
-export const { addToGroceryList, deleteFromGroceryList } = slice.actions;
+export const {
+  addToGroceryList,
+  deleteFromGroceryList,
+  changeGroceryItemState,
+} = slice.actions;
 
-export const selectGroceryItems = (state: RootState): GroceryItem[] =>
-  state.items;
+export const selectGroceryItems = (
+  state: RootState,
+  filter: 'all' | 'have' | 'runout' = 'all',
+): GroceryItem[] => {
+  if (filter === 'all') {
+    return state.items;
+  }
+
+  const filterMap = {
+    have: true,
+    runout: false,
+  };
+
+  return state.items.filter((item) => item.isHaving === filterMap[filter]);
+};
 
 export default slice.reducer;
