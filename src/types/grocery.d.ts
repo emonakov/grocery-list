@@ -3,7 +3,10 @@ interface GroceryItem {
   priority: 1 | 2 | 3 | 4 | 5;
   id: string;
   isHaving: boolean;
-  statusHistory: Array<[boolean, Date]>;
+  statusHistory: Array<{
+    status: boolean;
+    date: string;
+  }>;
 }
 
 interface GroceryState {

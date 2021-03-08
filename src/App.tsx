@@ -7,6 +7,11 @@ import { Provider } from 'react-redux';
 import GroceryList from './screens/GroceryList';
 import GroceryItem from './screens/GroceryItem';
 import { store } from './store';
+import { saveState } from './utils/localStorage';
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 const App: FC = () => (
   <Provider store={store}>

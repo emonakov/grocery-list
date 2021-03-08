@@ -85,7 +85,6 @@ const GroceryList: FC = () => {
                       ...(event.value as GroceryItem),
                       id: uuid(),
                       isHaving: false,
-                      statusHistory: [[false, new Date()]],
                     }),
                   );
 
