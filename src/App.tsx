@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC } from 'react';
+import { Grommet } from 'grommet';
+import { grommet } from 'grommet/themes';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import GroceryList from './screens/GroceryList';
+import GroceryItem from './screens/GroceryItem';
+import { store } from './store';
+
+const App: FC = () => (
+  <Provider store={store}>
+    <Grommet full theme={grommet} background="dark-1">
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact>
+            <GroceryList />
+          </Route>
+          <Route path="/item/:id">
+            <GroceryItem />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    </Grommet>
+  </Provider>
+);
 
 export default App;
