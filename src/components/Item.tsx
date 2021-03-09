@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { Box, Button, Text } from 'grommet';
@@ -24,7 +25,6 @@ const Item: FC<{ item: GroceryItem }> = ({ item }) => {
 
   return (
     <BoxRelative
-      key={item.id}
       pad="large"
       align="center"
       background={{ color: 'light-2', opacity: 'strong' }}
@@ -38,7 +38,7 @@ const Item: FC<{ item: GroceryItem }> = ({ item }) => {
         onClick={() => dispatch(deleteFromGroceryList(item))}
       />
       <Text weight="bold">{item.title}</Text>
-      <Text size="small">Last update: {date.format('DD, MMM hh:mm:ss')}</Text>
+      <Text size="small">Last update: {date.format('DD MMM hh:mm:ss')}</Text>
       <Switch
         checked={item.isHaving}
         onChange={(checked) =>
@@ -49,6 +49,13 @@ const Item: FC<{ item: GroceryItem }> = ({ item }) => {
             }),
           )
         }
+      />
+      <Button
+        as={({ className }) => (
+          <NavLink className={className} to={`/item/${item.id}`}>
+            Open
+          </NavLink>
+        )}
       />
     </BoxRelative>
   );

@@ -5,4 +5,5 @@ export {
   deleteFromGroceryList,
   selectGroceryItems,
   changeGroceryItemState,
+  selectGroceryItem,
 } from './slice';

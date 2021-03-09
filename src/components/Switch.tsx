@@ -9,6 +9,7 @@ const ToggleInput = styled.input.attrs(() => ({
   cursor: pointer;
   width: 50px;
   height: 20px;
+  min-height: 20px;
   background-color: ${({ theme }) => theme.global.colors['light-1']};
   border-radius: 50px;
   position: relative;

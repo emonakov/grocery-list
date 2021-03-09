@@ -76,4 +76,9 @@ export const selectGroceryItems = (
   return state.items.filter((item) => item.isHaving === filterMap[filter]);
 };
 
+export const selectGroceryItem = (
+  state: RootState,
+  id: string,
+): GroceryItem | undefined => state.items.find((item) => item.id === id);
+
 export default slice.reducer;
