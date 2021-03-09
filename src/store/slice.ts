@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 
 import { RootState } from './store';
-import { loadState } from '../utils/localStorage';
+// import { loadState } from '../utils/localStorage';
 
-const persistedState = loadState();
+// const persistedState = loadState();
 
 const initialState: GroceryState = {
-  items: persistedState?.items || [],
+  items: [],
 };
 
 export const slice = createSlice({
