@@ -69,7 +69,7 @@ const GroceryItem: FC = () => {
               <Box background="light-2" overflow="auto" height="medium">
                 <Box height="large" pad="small" gap="medium" border="between">
                   {item.statusHistory.map((status) => (
-                    <Text size="small">
+                    <Text size="small" key={status.date}>
                       {status.status ? 'Have' : 'Run out'} on{' '}
                       {dayjs(status.date).format('DD MMM hh:mm:ss')}
                     </Text>
